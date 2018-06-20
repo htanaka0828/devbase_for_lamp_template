@@ -3,7 +3,7 @@ services:
   httpd:
     build: .
     environment:
-      - VIRTUAL_HOST=sample.htanaka0828.devbase.dev
+      - VIRTUAL_HOST=sample.htanaka0828.devbase.test
       - VIRTUAL_PORT=80
     volumes:
       - /opt/src/sample:/sample

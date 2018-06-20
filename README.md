@@ -8,14 +8,12 @@
 	- vagrant-hostsupdaterのインストール
 - hostsファイルに書き込み権限をつける
 - gitからこのリポジトリをcloneしてくる
+- gitに登録したssh鍵を `ssh/` の下に設置する
 - プロジェクトのルートで`vagrant up` コマンドを実行
-- `ssh vagrant@htanaka0828.devbase.dev` でログイン
+- `ssh vagrant@htanaka0828.devbase.test` でログイン
 - `cd /vagrant/bin && ./all.sh` でdocker起動
-- ブラウザで http://sample.htanaka0828.devbase.dev にアクセス
+- ブラウザで http://sample.htanaka0828.devbase.test にアクセス
 - 表示されれば成功
-
-細かい手順は以下参照
-※詳細を書くよ！（未着手）
 
 ## 必要なもの
 
@@ -59,7 +57,7 @@ hostsへの書き込みを行うのでパーミッションは良い感じに設
 
 以下でssh接続ができる
 
-- host: htanaka0828.devbase.dev
+- host: htanaka0828.devbase.test
 - id: vagrant
 - pass: vagrant
 
