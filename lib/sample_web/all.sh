@@ -1,13 +1,12 @@
 #!/bin/bash
 
-../common/docker-restart.sh httpd
-../common/wait-proc.sh httpd
-
-sudo chown vagrant:vagrant -R /opt/src/sample
+if [ ! -d /opt/src/sample ]; then
+  mkdir /opt/src/sample
+fi
 
 if [ ! -f /opt/src/sample/index.php ]; then
   echo "<?php echo 'こんにちは<br>やさしいせかい！！';" > /opt/src/sample/index.php
+  sudo chown vagrant:vagrant -R /opt/src/sample
 fi
 
-# httpの起動
-docker exec -d sampleweb_httpd_1 systemctl start httpd
+../common/docker-restart.sh my_php

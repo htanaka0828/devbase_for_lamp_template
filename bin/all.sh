@@ -1,4 +1,6 @@
 #!/bin/bash
+
 pushd .
-./sample_web.sh
+cd ../lib/sample_web/
+./all.sh
 popd

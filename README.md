@@ -1,18 +1,16 @@
-# LAMPエンジニアのためのローカル開発環境構築ひな形
+# PHPエンジニアのためのローカル開発環境構築ひな形
 
 ## 構築手順（簡易版）
 
 - 必要なツールのダウンロード & インストール
 	- VirtualBoxのインストール
 	- Vagrantのインストール
-	- vagrant-hostsupdaterのインストール
-- hostsファイルに書き込み権限をつける
 - gitからこのリポジトリをcloneしてくる
-- gitに登録したssh鍵を `ssh/` の下に設置する
 - プロジェクトのルートで`vagrant up` コマンドを実行
-- `ssh vagrant@htanaka0828.devbase.test` でログイン
+- hostsファイルに `192.168.33.110 devbase.me` を追加
+- `ssh vagrant@devbase.me` でログイン
 - `cd /vagrant/bin && ./all.sh` でdocker起動
-- ブラウザで http://sample.htanaka0828.devbase.test にアクセス
+- ブラウザで http://devbase.me にアクセス
 - 表示されれば成功
 
 ## 必要なもの
@@ -27,15 +25,14 @@ http://www.vagrantup.com/
 公式サイト
 https://www.virtualbox.org/
 
-### plugin
+### hostの書き換え
+hostsに以下を追加する
 
-CLIで以下を実行
+```
+192.168.33.110 devbase.me
+```
 
-`vagrant plugin install vagrant-hostsupdater`
-
-hostsに開発domainの情報を書き込んでくれる
-
-hostsへの書き込みを行うのでパーミッションは良い感じに設定を行う
+※　以前はプラグインで解決していたけどいまいち不安定なので手動にしました
 
 ## コマンド関連
 
@@ -53,11 +50,11 @@ hostsへの書き込みを行うのでパーミッションは良い感じに設
 
 これだけ
 
-### login
+### SSH login
 
 以下でssh接続ができる
 
-- host: htanaka0828.devbase.test
+- host: devbase.me
 - id: vagrant
 - pass: vagrant
 
@@ -71,7 +68,7 @@ hostsへの書き込みを行うのでパーミッションは良い感じに設
 ## 設定周り
 
 ### docker関連
-各インスタンス毎に `htanaka0828/lib/インスタンス名` のあたりに起動scriptとかが入っています
+各インスタンス毎に `vagrant/lib/インスタンス名` のあたりに起動scriptとかが入っています
 
 dockerの起動方法などについてはこの辺りを参照してください
 
@@ -80,9 +77,9 @@ dockerの起動方法などについてはこの辺りを参照してくださ�
 
 また、sambaで共有されるので
 
-windowsの場合は `\\htanaka0828.devbase.test` をエクスプローラで参照
+windowsの場合は `\\devbase.me` をエクスプローラで参照
 
-macの場合は `smb://htanaka0828.devbase.test` をfinderで参照
+macの場合は `smb://devbase.me` をfinderで参照
 
 をするとローカルからファイルの参照、更新ができます
 
